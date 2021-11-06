@@ -1,0 +1,24 @@
+﻿<Window x:Class="RlktDxTextureViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RlktDxTextureViewer"
+        mc:Ignorable="d"
+        IsVisibleChanged="Window_IsVisibleChanged"
+        Title="Rlkt DirectX Texture Tool" Height="340" Width="434">
+    <Grid>
+        <StackPanel Margin="20">
+            <StackPanel Orientation="Horizontal" x:Name="currentFilePanel" Visibility="Collapsed">
+                <Label>Editing texture for file:</Label>
+                <Label x:Name="currentFile"></Label>
+            </StackPanel>
+            <TextBox x:Name="texName" TextAlignment="Center" VerticalContentAlignment="Center" FontWeight="SemiBold" FontSize="18" Height="50" IsEnabled="False">EmptyTexture.tga</TextBox>
+
+            <Separator Margin="0,20,0,20"/>
+            <Button x:Name="loadBtn" Height="50" Click="loadBtn_Click">Load Mesh (.X) File</Button>
+            <Button x:Name="saveBtn"  Height="50" IsEnabled="False" Click="saveBtn_Click">Save Mesh (.X) File</Button>
+            
+        </StackPanel>
+    </Grid>
+</Window>
