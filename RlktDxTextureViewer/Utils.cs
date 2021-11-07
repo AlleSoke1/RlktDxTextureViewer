@@ -46,14 +46,14 @@ namespace RlktDxTextureViewer
 
                 //
                 reader.BaseStream.Position = 0;
-                byte[] header = reader.ReadBytes(0x16);
+                byte[] header = reader.ReadBytes(16);
                 header[8] = (byte)'b';
                 header[9] = (byte)'i';
                 header[10] = (byte)'n';
                 header[11] = (byte)' ';
                 xfile.AddData(header);
 
-                //reader.BaseStream.Seek(6, SeekOrigin.Current);
+                reader.BaseStream.Seek(6, SeekOrigin.Current);
 
 
                 //
