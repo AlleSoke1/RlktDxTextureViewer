@@ -39,8 +39,8 @@ namespace RlktDxTextureViewer
                 }
                 
                 //Binary MSZip Format
-                if (strFormat.ToString() != "bzip")
-                    throw new XException("Invalid file format, contact dev.");
+                if (strFormat != "bzip")
+                    throw new XException(string.Format("Invalid file format ({0}), contact dev.", strFormat));
 
                 reader.BaseStream.Seek(10, SeekOrigin.Current);
 
