@@ -27,9 +27,18 @@ namespace RlktDxTextureViewer
 
                 reader.BaseStream.Seek(5, SeekOrigin.Current);
 
-                //only bzip is supported
+                //Check file format
                 char[] format = reader.ReadChars(4);
                 string strFormat = new string(format);
+                
+                //Binary Format
+                if(strFormat == "bin ")
+                {
+                    xfile.AddData(xfile.data);
+                    return true;
+                }
+                
+                //Binary MSZip Format
                 if (strFormat.ToString() != "bzip")
                     throw new XException("Invalid file format, contact dev.");
 
@@ -37,14 +46,14 @@ namespace RlktDxTextureViewer
 
                 //
                 reader.BaseStream.Position = 0;
-                byte[] header = reader.ReadBytes(16);
+                byte[] header = reader.ReadBytes(0x16);
                 header[8] = (byte)'b';
                 header[9] = (byte)'i';
                 header[10] = (byte)'n';
                 header[11] = (byte)' ';
                 xfile.AddData(header);
 
-                reader.BaseStream.Seek(6, SeekOrigin.Current);
+                //reader.BaseStream.Seek(6, SeekOrigin.Current);
 
 
                 //
