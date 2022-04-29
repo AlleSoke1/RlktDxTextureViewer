@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace RlktDxTextureViewer
 {
+ internal enum XFileType
+    {
+        NONE,
+        BINARY,
+        TEXT,
+        BINARY_MSZIP,
+    }
     internal class XFileData
     {
         public Dictionary<string, XTexture> textures = new Dictionary<string, XTexture>();
@@ -16,6 +23,7 @@ namespace RlktDxTextureViewer
         public byte[] uncompData { get; set; } = null;
 
         public int texturePos { get; set; } = -1;
+        XFileType fileType = XFileType.NONE;
 
         public void AddData(byte[] data)
         {
@@ -115,5 +123,7 @@ namespace RlktDxTextureViewer
         }
 
         public byte[] GetData() => uncompData;
+        public void SetFileType(XFileType type) => fileType = type;
+        public XFileType GetFileType() => fileType;
     }
 }
